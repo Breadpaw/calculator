@@ -32,6 +32,21 @@ equalsButton.addEventListener("click", operateEquals);
 
 acButton.addEventListener("click", reset);
 
+document.addEventListener("keypress", function(e) {
+  const isNumber = RegExp("[0-9]");
+  // const isOperator
+  const isEquals = RegExp("=");
+
+  if(isNumber.test(e.key)) {
+    //editNumber(e.key)
+    const selectedButton = document.getElementById(e.key);
+    selectedButton.click()
+  } else if (isEquals.test(e.key)) {
+
+    }
+  }
+)
+
 function editNumber() {
   if (operator !== "") {
     num2 += this.id;
