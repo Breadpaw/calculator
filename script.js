@@ -33,19 +33,36 @@ equalsButton.addEventListener("click", operateEquals);
 acButton.addEventListener("click", reset);
 
 document.addEventListener("keypress", function(e) {
-  const isNumber = RegExp("[0-9]");
-  // const isOperator
-  const isEquals = RegExp("=");
 
-  if(isNumber.test(e.key)) {
-    //editNumber(e.key)
-    const selectedButton = document.getElementById(e.key);
-    selectedButton.click()
-  } else if (isEquals.test(e.key)) {
+  const pressedKey = e.key;
+  let targetButton = "";
 
-    }
+  // The numbers and equal sign are the id of the buttons. These can go in 1 test.
+  // The operators have to be defined.
+
+  const isNumber = RegExp(/[0-9]/);
+  const isEquals = RegExp(/=/);
+  const isAdd = RegExp(/\+/);
+  const isSubtract = RegExp(/\-/);
+  const isMultiply = RegExp(/\*/);
+  const isDivide = RegExp(/\//);
+
+  if(isNumber.test(pressedKey) || isEquals.test(pressedKey)) {
+    targetButton = document.getElementById(pressedKey);
+  } else if (isAdd.test(pressedKey)){
+    targetButton = document.getElementById("add");
+    // operators
+  } else if (isSubtract.test(pressedKey)) {
+    targetButton = document.getElementById("subtract");
+  } else if (isMultiply.test(pressedKey)) {
+    targetButton = document.getElementById("multiply");
+  } else if (isDivide.test(pressedKey)) {
+    targetButton = document.getElementById("divide")
   }
-)
+
+  targetButton.click()
+
+});
 
 function editNumber() {
   if (operator !== "") {
